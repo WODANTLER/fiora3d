@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0e1020">
+<title>Fiora 3D — Cosas increíbles en 3D</title>
+<meta name="description" content="Fiora 3D · Impresión 3D en Argentina. Iluminación, deco, floreros, macetas, organizadores, figuras, máscaras y más. Escribinos por WhatsApp.">
+<link rel="canonical" href="https://fiora3d.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fiora 3D — Cosas increíbles en 3D">
+<meta property="og:description" content="Iluminación, deco y objetos únicos impresos en 3D. Escribinos por WhatsApp o seguinos en Instagram.">
+<meta property="og:url" content="https://fiora3d.com/">
+<meta property="og:image" content="https://fiora3d.com/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Fiora 3D · Diseño e impresión 3D personalizada en Argentina. Figuras tamaño real, máscaras, lámparas, portalibros, llaveros y cuadros. Mayorista y minorista.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0c0c14; --ink2:#13131e; --panel:#1a1a28; --panel2:#202031;
+  --yellow:#FFC400; --yellow-b:#FFD93B;
+  --blue:#3B9DFF; --blue-deep:#1666EA;
+  --red:#FF3556; --red-deep:#E51F44;
+  --paper:#F6F2E7;
+  --w:#ffffff;
+  --tx:rgba(255,255,255,.78);
+  --tx-dim:rgba(255,255,255,.52);
+  --line:rgba(255,255,255,.10);
+  --maxw:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ink);color:var(--w);
+  font-family:'Outfit',system-ui,sans-serif;font-weight:400;
+  line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--yellow);color:#000}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.wrap.wide{max-width:1520px}
+
+/* halftone ben-day dot texture */
+.halftone{
+  position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(rgba(59,157,255,.5) 1.1px,transparent 1.3px);
+  background-size:13px 13px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 75%);
+          mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 75%);
+}
+.halftone.yellow{background-image:radial-gradient(rgba(255,196,0,.55) 1.1px,transparent 1.3px)}
+
+/* ---------- comic burst badge ---------- */
+.burst-badge{position:relative;display:inline-flex;align-items:center;justify-content:center}
+.burst-badge svg{position:absolute;inset:0;width:100%;height:100%}
+.burst-badge span{position:relative;z-index:2}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(12,12,20,.72);backdrop-filter:blur(12px);
+  border-bottom:2px solid #000;box-shadow:0 4px 0 rgba(0,0,0,.35);
+}
+.nav-in{display:flex;align-items:center;gap:22px;height:70px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800}
+.brand img{width:42px;height:42px;border-radius:50%;border:2px solid #000;box-shadow:0 0 0 2px var(--yellow)}
+.brand .brand-logo-sm{height:46px;width:auto;border:0;border-radius:0;box-shadow:none;display:block}
+.foot .brand .brand-logo-sm{height:58px;width:auto}
+.brand b{font-family:'Bangers',cursive;font-size:1.45rem;letter-spacing:1px;
+  color:var(--yellow);-webkit-text-stroke:1.4px #000;text-shadow:2px 2px 0 var(--red-deep)}
+.nav-links{margin-left:auto;display:flex;gap:26px}
+.nav-links a{font-weight:600;font-size:.95rem;color:var(--tx);transition:color .2s}
+.nav-links a:hover{color:var(--yellow)}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:.92rem;
+  background:var(--yellow);color:#000;padding:11px 18px;border-radius:40px;
+  border:2px solid #000;box-shadow:3px 3px 0 #000;transition:transform .15s,box-shadow .15s;
+}
+.nav-cta:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 #000}
+.nav-burger{display:none}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;padding:64px 0 40px;
+  background:
+   radial-gradient(120% 80% at 85% 10%,rgba(59,157,255,.16),transparent 55%),
+   radial-gradient(90% 70% at 5% 90%,rgba(255,196,0,.12),transparent 55%),
+   var(--ink);
+}
+.hero-grid{position:relative;z-index:3;display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;margin-bottom:22px;
+  font-weight:700;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+  background:var(--yellow);padding:8px 16px;border:2px solid #000;border-radius:40px;
+  box-shadow:3px 3px 0 #000;
+}
+.eyebrow .rk{font-size:1rem}
+.hero h1{margin:0 0 8px;line-height:.92}
+.btn .ico,.nav-cta .ico{width:1.1em;height:1.1em;vertical-align:-.16em;margin-right:.1em;flex:none}
+.hero h1 .word{
+  font-family:'Bangers',cursive;display:block;letter-spacing:2px;
+  font-size:clamp(3.6rem,10vw,7rem);color:var(--yellow);
+  -webkit-text-stroke:3px #000;
+  text-shadow:6px 6px 0 var(--red-deep), 6px 6px 0 #000;
+}
+.hero h1 .word.b2{color:var(--blue);text-shadow:6px 6px 0 #000}
+.hero h1 .brand-logo{display:block;width:min(470px,90%);height:auto;margin:0 0 4px;filter:drop-shadow(4px 6px 0 rgba(0,0,0,.3))}
+.hero .lede{font-size:1.22rem;color:var(--tx);max-width:30ch;margin:18px 0 30px;font-weight:300}
+.hero .lede strong{color:var(--w);font-weight:600}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:1rem;
+  padding:15px 26px;border-radius:46px;border:2.5px solid #000;cursor:pointer;
+  box-shadow:4px 4px 0 #000;transition:transform .15s,box-shadow .15s;
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #000}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #000}
+.btn-y{background:var(--yellow);color:#000}
+.btn-r{background:var(--red);color:#fff}
+.btn.ig-only{padding:13px;border-radius:50%}
+.btn.ig-only .ico{width:1.5em;height:1.5em;margin:0}
+.btn-ghost{background:transparent;color:#fff;box-shadow:none;border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--yellow);color:var(--yellow);transform:none;box-shadow:none}
+.hero-stats{display:flex;gap:30px;margin-top:36px;flex-wrap:wrap}
+.hero-stats div{position:relative;padding-left:16px}
+.hero-stats div::before{content:"";position:absolute;left:0;top:5px;bottom:5px;width:4px;background:var(--blue);border-radius:3px}
+.hero-stats b{font-family:'Anton',sans-serif;font-size:1.5rem;display:block;letter-spacing:.5px}
+.hero-stats span{font-size:.82rem;color:var(--tx-dim);text-transform:uppercase;letter-spacing:.1em}
+
+/* hero collage */
+.collage{position:relative;display:flex;align-items:center;justify-content:center;height:540px}
+.pcollage{position:relative;z-index:3;display:grid;grid-template-columns:.9fr 1fr;grid-template-rows:1fr 1fr;gap:18px;width:100%;height:100%;max-width:520px;animation:heroIn .85s cubic-bezier(.2,.7,.2,1) both}
+@keyframes heroIn{from{opacity:0;transform:translateY(22px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes floatA{0%,100%{transform:rotate(1.5deg) translateY(0)}50%{transform:rotate(1.5deg) translateY(-9px)}}
+@keyframes floatB{0%,100%{transform:rotate(-1.5deg) translateY(0)}50%{transform:rotate(-1.5deg) translateY(-7px)}}
+@keyframes floatC{0%,100%{transform:rotate(1.5deg) translateY(0)}50%{transform:rotate(1.5deg) translateY(-6px)}}
+.pf-1{animation:floatB 5.2s ease-in-out infinite;will-change:transform}
+.pf-2{animation:floatA 6s ease-in-out infinite;will-change:transform}
+.pf-3{animation:floatC 5.8s ease-in-out infinite .3s;will-change:transform}
+.video-wrap{position:relative;height:100%;aspect-ratio:562/1000;max-width:100%;transform:rotate(-1.5deg)}
+.pf-video{width:100%;height:100%;box-shadow:8px 8px 0 #000;border-radius:18px}
+.pf-video .v-still,.pf-video .v-anim{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.pf-video .v-anim{display:none}
+.pf-video:hover .v-still{display:none}
+.pf-video:hover .v-anim{display:block}
+@media(hover:none){.pf-video .v-still{display:none}.pf-video .v-anim{display:block}}
+.pframe{
+  position:relative;border:3px solid #000;border-radius:16px;overflow:hidden;
+  box-shadow:6px 6px 0 #000;background:var(--panel);
+}
+.pframe img{width:100%;height:100%;object-fit:cover;display:block}
+.pframe video{width:100%;height:100%;object-fit:cover;display:block}
+.pframe .tag{
+  position:absolute;left:10px;bottom:10px;font-family:'Anton',sans-serif;
+  font-size:.78rem;letter-spacing:.06em;background:var(--yellow);color:#000;
+  padding:5px 11px;border:2px solid #000;border-radius:6px;text-transform:uppercase;z-index:2;
+}
+.pf-1{grid-column:1;grid-row:1;transform:rotate(-1.5deg)}
+.pf-1 img{object-position:center 45%}
+.pf-1 .tag{background:var(--red);color:#fff}
+.pf-2{grid-column:2;grid-row:1/3;transform:rotate(1.5deg)}
+.pf-2 img{object-position:center 32%}
+.pf-2::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;background:radial-gradient(125% 95% at 50% 40%,rgba(0,0,0,0) 42%,rgba(0,0,0,.5) 75%,rgba(0,0,0,.85) 100%)}
+.pf-3{grid-column:1;grid-row:2;transform:rotate(1.5deg)}
+.pf-3 .tag{background:var(--blue);color:#fff}
+.pop-tag{
+  position:absolute;z-index:6;font-family:'Bangers',cursive;font-size:1.7rem;
+  color:var(--yellow);-webkit-text-stroke:2px #000;text-shadow:3px 3px 0 var(--red-deep);
+  transform:rotate(-10deg);right:-14px;top:-18px;
+}
+
+.cta-burst{position:absolute;z-index:8;left:-46px;bottom:-16px;width:172px;height:172px;
+  display:grid;place-items:center;text-decoration:none;transform:rotate(-9deg);
+  transition:transform .18s ease;filter:drop-shadow(4px 5px 0 rgba(0,0,0,.4))}
+.cta-burst:hover{transform:rotate(-9deg) scale(1.07)}
+.cta-burst svg{position:absolute;inset:0;width:100%;height:100%}
+.cta-burst .txt{position:relative;z-index:2;font-family:'Anton',sans-serif;color:#0c0c14;
+  text-align:center;line-height:1;font-size:.86rem;text-transform:uppercase;padding:0 30px;transform:rotate(3deg)}
+.cta-burst .txt b{display:block;margin-top:4px;font-family:'Bangers',cursive;font-weight:400;
+  font-size:1.12rem;letter-spacing:.5px;color:var(--red-deep);-webkit-text-stroke:.6px #000}
+
+
+/* ---------- MARQUEE ---------- */
+.band{background:var(--yellow);border-top:3px solid #000;border-bottom:3px solid #000;overflow:hidden;padding:14px 0}
+.band-track{display:flex;gap:0;white-space:nowrap;width:max-content;animation:scroll 32s linear infinite}
+.band-track span{font-family:'Anton',sans-serif;font-size:1.35rem;letter-spacing:.04em;
+  text-transform:uppercase;color:#000;padding:0 26px;display:inline-flex;align-items:center;gap:26px}
+.band-track span::after{content:"";width:14px;height:14px;background:var(--blue-deep);
+  border:2px solid #000;border-radius:50%;display:inline-block}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- SECTION shell ---------- */
+.sec{position:relative;padding:96px 0}
+.sec-head{max-width:640px;margin:0 0 46px}
+.kicker{
+  display:inline-flex;align-items:center;gap:9px;font-family:'Bangers',cursive;
+  font-size:1.15rem;letter-spacing:1.5px;color:var(--blue);margin-bottom:10px;
+}
+.kicker i{width:10px;height:10px;background:var(--red);border:2px solid #000;border-radius:50%;display:inline-block}
+.sec h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(2.1rem,4.6vw,3.4rem);
+  line-height:1.02;margin:0 0 14px;letter-spacing:.5px}
+.sec h2 em{font-style:normal;color:var(--yellow)}
+.sec h2 .blu{color:var(--blue)}
+.sec p.intro{color:var(--tx);font-size:1.08rem;font-weight:300;margin:0}
+
+/* ---------- CATEGORIES ---------- */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cat{
+  position:relative;background:var(--panel);border:2px solid #000;border-radius:16px;
+  padding:24px 22px;box-shadow:4px 4px 0 #000;overflow:hidden;
+  transition:transform .18s,box-shadow .18s;
+}
+.cat:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--blue-deep)}
+.cat .ico{font-size:1.9rem;display:block;margin-bottom:12px}
+.cat h3{font-family:'Anton',sans-serif;font-weight:400;font-size:1.28rem;margin:0 0 5px;letter-spacing:.4px}
+.cat p{margin:0;font-size:.92rem;color:var(--tx-dim);line-height:1.45}
+.cat .num{position:absolute;right:14px;top:8px;font-family:'Bangers',cursive;
+  font-size:1.5rem;color:rgba(255,255,255,.07)}
+
+/* ---------- GALLERY ---------- */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;grid-auto-flow:dense}
+.gal .shot{overflow:hidden}
+.gal .span2{grid-column:span 2;grid-row:span 2}
+.gal .big-r{grid-column:3/5;grid-row:span 2}
+.gal .tall{grid-row:span 2}
+.gal .tall img{aspect-ratio:1/2}
+.cat-block{margin-bottom:40px}
+.cat-block:last-child{margin-bottom:0}
+.cat-title{font-family:'Anton',sans-serif;font-weight:400;font-size:1.55rem;text-transform:uppercase;letter-spacing:.5px;color:#fff;margin:0 0 16px;display:flex;align-items:center;gap:12px}
+.cat-title::before{content:"";width:28px;height:7px;background:var(--yellow);border:2px solid #000;border-radius:5px;flex:none}
+.shot{
+  margin:0;position:relative;overflow:hidden;background:#12121c;cursor:pointer;
+}
+.shot img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;transition:transform .5s ease}
+.shot:hover img{transform:scale(1.07)}
+.shot video{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#12121c;transition:transform .5s ease}
+.shot:hover video{transform:scale(1.07)}
+.shot img.zoom-wolv{transform:scale(1.75);transform-origin:60% 66%}
+.shot:hover img.zoom-wolv{transform:scale(1.85)}
+.shot .ov{
+  position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:16px;opacity:0;transition:opacity .25s;
+  background:linear-gradient(to top,rgba(0,0,0,.82),transparent 62%);
+}
+.shot:hover .ov{opacity:1}
+.shot .ov b{font-family:'Anton',sans-serif;font-weight:400;font-size:1.15rem;letter-spacing:.4px}
+.shot .ov small{color:var(--yellow);font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem}
+.shot .pin{position:absolute;left:11px;top:11px;font-size:.66rem;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;background:var(--yellow);color:#000;padding:4px 9px;border:2px solid #000;border-radius:30px;z-index:3}
+
+/* ---------- CUSTOM / speech ---------- */
+.custom-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.bubble{
+  position:relative;background:var(--paper);color:#101018;border:3px solid #000;
+  border-radius:22px;padding:30px 32px;box-shadow:7px 7px 0 #000;
+}
+.bubble::after{content:"";position:absolute;left:54px;bottom:-26px;width:0;height:0;
+  border:14px solid transparent;border-top-color:#000;border-bottom:0}
+.bubble::before{content:"";position:absolute;left:57px;bottom:-19px;z-index:2;width:0;height:0;
+  border:11px solid transparent;border-top-color:var(--paper);border-bottom:0}
+.bubble p{font-size:1.25rem;font-weight:500;line-height:1.4;margin:0 0 14px}
+.bubble .who{font-weight:800;font-size:.92rem}
+.bubble .who span{color:var(--blue-deep)}
+.custom-list{list-style:none;padding:0;margin:0 0 26px;display:grid;gap:14px}
+.custom-list li{display:flex;gap:13px;align-items:flex-start;font-size:1.02rem;color:var(--tx)}
+.custom-list .ck{flex:none;width:26px;height:26px;border-radius:50%;background:var(--yellow);
+  border:2px solid #000;display:grid;place-items:center;font-weight:900;color:#000;font-size:.85rem;margin-top:1px}
+
+/* ---------- WHOLESALE ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.deal{
+  position:relative;border:3px solid #000;border-radius:20px;padding:34px 30px;overflow:hidden;
+  box-shadow:6px 6px 0 #000;
+}
+.deal.may{background:linear-gradient(150deg,var(--blue-deep),#0f3fa0)}
+.deal.min{background:linear-gradient(150deg,var(--red),var(--red-deep))}
+.deal .lab{font-family:'Bangers',cursive;font-size:1.1rem;letter-spacing:1.5px;color:#fff;opacity:.9}
+.deal h3{font-family:'Anton',sans-serif;font-weight:400;font-size:2rem;margin:6px 0 10px;letter-spacing:.5px}
+.deal p{margin:0 0 20px;color:rgba(255,255,255,.9);font-weight:300;font-size:1.02rem}
+.deal a{display:inline-flex;align-items:center;gap:8px;font-weight:800;background:#fff;color:#000;
+  padding:12px 20px;border:2px solid #000;border-radius:40px;box-shadow:3px 3px 0 #000;transition:transform .15s,box-shadow .15s}
+.deal a:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #000}
+.deal .halftone{opacity:.35}
+
+/* ---------- WHY ---------- */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.why{text-align:left}
+.why .bb{width:64px;height:64px;margin-bottom:16px}
+.why .bb .bt{font-family:'Anton',sans-serif;font-size:1.5rem;color:#000}
+.why h3{font-family:'Anton',sans-serif;font-weight:400;font-size:1.2rem;margin:0 0 7px;letter-spacing:.3px}
+.why p{margin:0;color:var(--tx-dim);font-size:.94rem;line-height:1.5}
+
+/* ---------- FINAL CTA ---------- */
+.final{position:relative;overflow:hidden;text-align:center;padding:110px 0;
+  background:radial-gradient(70% 120% at 50% 0%,rgba(59,157,255,.18),transparent 60%),var(--ink2)}
+.final .big{font-family:'Bangers',cursive;font-size:clamp(2.8rem,8vw,6rem);line-height:.95;
+  letter-spacing:2px;margin:0 0 10px;color:var(--yellow);
+  -webkit-text-stroke:2.5px #000;text-shadow:6px 6px 0 var(--red-deep)}
+.final .big .blu{color:var(--blue);text-shadow:6px 6px 0 #000}
+.final p{font-size:1.2rem;color:var(--tx);max-width:48ch;margin:0 auto 34px;font-weight:300}
+.final .cta-row{justify-content:center}
+
+/* ---------- FOOTER ---------- */
+.foot{background:#08080e;border-top:3px solid #000;padding:54px 0 30px}
+.foot-in{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:44px;align-items:flex-start}
+.foot .brand img{width:54px;height:54px}
+.foot .brand b{font-size:1.7rem}
+.foot-col h4{font-family:'Anton',sans-serif;font-weight:400;font-size:.95rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--yellow);margin:0 0 12px}
+.foot-col a{display:block;color:var(--tx-dim);font-size:.94rem;padding:4px 0;transition:color .2s}
+.foot-col a:hover{color:var(--w)}
+.foot-col a .cico{width:17px;height:17px;vertical-align:-3px;margin-right:9px}
+.foot-bottom{border-top:1px solid var(--line);margin-top:38px;padding-top:20px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--tx-dim);font-size:.84rem}
+.foot-bottom a{color:var(--yellow);font-weight:600}
+
+/* reveal anim */
+.rv{opacity:0;transform:translateY(28px) scale(.96);transition:opacity .7s cubic-bezier(.22,.7,.2,1),transform .7s cubic-bezier(.22,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.gal .shot.rv{transform:translateY(32px) scale(.9)}
+.gal .shot.rv.in{transform:none}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:30px}
+  .collage{height:430px;width:100%;max-width:440px;margin:0 auto}
+  .custom-grid{grid-template-columns:1fr;gap:34px}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .gal{grid-template-columns:repeat(2,1fr)}
+  .gal .big-r{grid-column:span 2;grid-row:span 2}
+  .why-grid{grid-template-columns:repeat(2,1fr);gap:26px}
+  .foot-in{grid-template-columns:1.4fr 1fr}
+  .split{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  .wrap{padding:0 18px}
+  .sec{padding:70px 0}
+  .cat-grid{grid-template-columns:1fr}
+  .gal{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr;gap:30px}
+  .hero-stats{gap:20px}
+  .btn{font-size:.95rem;padding:14px 22px}
+  .pop-tag,.cta-burst{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;scroll-behavior:auto}
+  .rv,.gal .shot.rv,.gal .shot.rv.in{opacity:1;transform:none;transition:none}
+}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+/* ---- MOBILE UX: menú, labels touch, lightbox ---- */
+.gal .shot{cursor:pointer}
+.nav-burger{display:none;background:var(--yellow);border:2.5px solid #000;border-radius:12px;width:46px;height:42px;box-shadow:3px 3px 0 #000;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:0}
+.nav-burger span{display:block;width:22px;height:3px;background:#000;border-radius:2px;transition:.25s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{position:fixed;left:0;right:0;top:70px;background:#0d0f1c;border-bottom:3px solid #000;transform:translateY(-130%);transition:transform .3s cubic-bezier(.2,.7,.2,1);z-index:40;padding:12px 22px 20px;display:flex;flex-direction:column}
+.nav-mobile.open{transform:translateY(0)}
+.nav-mobile a{color:var(--w);font-weight:700;font-size:1.15rem;padding:14px 4px;border-bottom:1px solid var(--line)}
+.nav-mobile a:last-child{border-bottom:0}
+@media (hover:none){
+  .shot .ov{opacity:1;background:linear-gradient(to top,rgba(0,0,0,.74) 0%,rgba(0,0,0,.15) 46%,transparent 72%)}
+  .shot:hover img,.shot:hover video{transform:none}
+  .shot img.zoom-wolv{transform:scale(1.75);transform-origin:60% 66%}
+}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(6,6,14,.94);display:none;align-items:center;justify-content:center;padding:18px;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:80vh;border:3px solid #000;border-radius:14px;box-shadow:6px 6px 0 rgba(0,0,0,.55);background:#12121c}
+.lb-cap{position:absolute;bottom:20px;left:0;right:0;text-align:center;color:#fff;font-weight:700;font-size:1.02rem;padding:0 16px}
+.lb-cap small{display:block;color:var(--yellow);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;margin-bottom:3px}
+.lb-btn{position:absolute;background:var(--yellow);color:#000;border:2.5px solid #000;border-radius:50%;width:48px;height:48px;font-size:1.7rem;font-weight:900;cursor:pointer;box-shadow:3px 3px 0 #000;display:flex;align-items:center;justify-content:center;line-height:1;transition:transform .12s}
+.lb-btn:active{transform:scale(.9)}
+.lb-close{top:18px;right:18px}
+.lb-prev{left:14px;top:50%;margin-top:-24px}
+.lb-next{right:14px;top:50%;margin-top:-24px}
+@media(max-width:560px){.lb-btn{width:42px;height:42px;font-size:1.5rem}.lb-prev{left:8px;margin-top:-21px}.lb-next{right:8px;margin-top:-21px}}
+@media(max-width:900px){
+  .nav-burger{display:flex}
+  .nav-cta{margin-left:auto;padding:11px 15px;font-size:.88rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><img class="brand-logo-sm" src="img/logo.png" alt="Fiora 3D"></a>
+    <div class="nav-links">
+      <a href="#gal">Trabajos</a>
+      <a href="#custom">A tu medida</a>
+      <a href="#mayor">Mayorista</a>
+    </div>
+    <a class="nav-cta" href="https://wa.me/5492954378222?text=%C2%A1Hola%20Fiora%203D%21%20%F0%9F%91%8B%20Quiero%20hacer%20una%20consulta%20%F0%9F%9A%80" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 .4C7.2.4 0 7.5 0 16.4c0 2.9.8 5.6 2.2 8L0 32l7.8-2C10.2 31.3 13 32 16 32c8.8 0 16-7.2 16-16S24.8.4 16 .4zm0 29.2c-2.6 0-5.1-.7-7.3-2l-.5-.3-4.6 1.3 1.2-4.5-.3-.5A13.2 13.2 0 0 1 2.7 16.4C2.7 9 8.7 3.1 16 3.1c3.6 0 6.9 1.4 9.4 3.9a13.2 13.2 0 0 1 3.9 9.4c0 7.3-6 13.2-13.3 13.2zm7.3-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2s-1 1.3-1.3 1.6c-.2.2-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.2.1-.5 0-.7l-1.2-3c-.3-.7-.6-.6-.9-.7h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.4-1.4 3.3s1.4 3.9 1.6 4.1c.2.3 2.8 4.3 6.8 6 1 .4 1.7.7 2.3.8.9.3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.4-.2-.8-.4z"/></svg> Pedí el tuyo</a>
+    <button class="nav-burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="#gal">Trabajos</a>
+    <a href="#custom">A tu medida</a>
+    <a href="#mayor">Mayorista</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="halftone yellow"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="rk">🚀</span> Santa Rosa, La Pampa. Argentina</span>
+      <h1><img class="brand-logo" src="img/logo.png" alt="Fiora 3D"></h1>
+      <p class="lede">Cosas <strong>increíbles</strong> en 3D. Diseñamos e imprimimos las piezas que te imaginás — desde un llavero hasta una figura <strong>tamaño real</strong>.</p>
+      <div class="cta-row">
+        <a class="btn btn-y" href="https://wa.me/5492954378222?text=%C2%A1Hola%20Fiora%203D%21%20%F0%9F%91%8B%20Quiero%20hacer%20una%20consulta%20%F0%9F%9A%80" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 .4C7.2.4 0 7.5 0 16.4c0 2.9.8 5.6 2.2 8L0 32l7.8-2C10.2 31.3 13 32 16 32c8.8 0 16-7.2 16-16S24.8.4 16 .4zm0 29.2c-2.6 0-5.1-.7-7.3-2l-.5-.3-4.6 1.3 1.2-4.5-.3-.5A13.2 13.2 0 0 1 2.7 16.4C2.7 9 8.7 3.1 16 3.1c3.6 0 6.9 1.4 9.4 3.9a13.2 13.2 0 0 1 3.9 9.4c0 7.3-6 13.2-13.3 13.2zm7.3-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2s-1 1.3-1.3 1.6c-.2.2-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.2.1-.5 0-.7l-1.2-3c-.3-.7-.6-.6-.9-.7h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.4-1.4 3.3s1.4 3.9 1.6 4.1c.2.3 2.8 4.3 6.8 6 1 .4 1.7.7 2.3.8.9.3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.4-.2-.8-.4z"/></svg> Escribinos por WhatsApp</a>
+        <a class="btn btn-ghost" href="#gal">Ver trabajos</a>
+      </div>
+    </div>
+    <div class="collage">
+      <div class="pcollage">
+        <div class="pframe pf-2"><img src="img/majin-buu-escala-1-1.jpg" alt="Majin Buu escala 1:1" style="object-position:center 30%"><span class="tag">Figuras 1:1</span></div>
+        <div class="pframe pf-1"><img src="img/casco-iron-man.jpg" alt="Casco Iron Man" style="object-position:center bottom;transform:scale(1.16);transform-origin:50% 92%"><span class="tag">Máscaras</span></div>
+        <div class="pframe pf-3"><img src="img/llaveros-de-mascotas.jpg" alt="Llaveros de mascotas" style="object-position:82% center"><span class="tag">Llaveros</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE BAND -->
+<div class="band" aria-hidden="true">
+  <div class="band-track">
+    <span>Figuras tamaño real</span><span>Máscaras &amp; cascos</span><span>Iluminación</span><span>Floreros</span><span>Macetas</span><span>Organizadores</span><span>Portalibros</span><span>Llaveros</span><span>Cuadros</span><span>Cartelería</span><span>Personalizados</span>
+    <span>Figuras tamaño real</span><span>Máscaras &amp; cascos</span><span>Iluminación</span><span>Floreros</span><span>Macetas</span><span>Organizadores</span><span>Portalibros</span><span>Llaveros</span><span>Cuadros</span><span>Cartelería</span><span>Personalizados</span>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="halftone yellow"></div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <h2 class="big">¿LO IMAGINÁS?<br><span class="blu">LO IMPRIMIMOS</span></h2>
+    <p>Escribinos por WhatsApp o seguinos en Instagram. Te respondemos con tu presupuesto y arrancamos tu pieza.</p>
+    <div class="cta-row">
+      <a class="btn btn-y" href="https://wa.me/5492954378222?text=%C2%A1Hola%20Fiora%203D%21%20%F0%9F%91%8B%20Quiero%20hacer%20una%20consulta%20%F0%9F%9A%80" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 .4C7.2.4 0 7.5 0 16.4c0 2.9.8 5.6 2.2 8L0 32l7.8-2C10.2 31.3 13 32 16 32c8.8 0 16-7.2 16-16S24.8.4 16 .4zm0 29.2c-2.6 0-5.1-.7-7.3-2l-.5-.3-4.6 1.3 1.2-4.5-.3-.5A13.2 13.2 0 0 1 2.7 16.4C2.7 9 8.7 3.1 16 3.1c3.6 0 6.9 1.4 9.4 3.9a13.2 13.2 0 0 1 3.9 9.4c0 7.3-6 13.2-13.3 13.2zm7.3-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2s-1 1.3-1.3 1.6c-.2.2-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.2.1-.5 0-.7l-1.2-3c-.3-.7-.6-.6-.9-.7h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.4-1.4 3.3s1.4 3.9 1.6 4.1c.2.3 2.8 4.3 6.8 6 1 .4 1.7.7 2.3.8.9.3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.4-.2-.8-.4z"/></svg> Escribinos por WhatsApp</a>
+      <a class="btn btn-r ig-only" aria-label="Instagram @fiora3d" href="https://www.instagram.com/fiora3d/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.44c-3.14 0-3.51.01-4.75.07-1.15.05-1.77.24-2.18.4-.55.22-.94.47-1.35.88-.41.41-.66.8-.88 1.35-.16.41-.35 1.03-.4 2.18-.06 1.24-.07 1.61-.07 4.75s.01 3.51.07 4.75c.05 1.15.24 1.77.4 2.18.22.55.47.94.88 1.35.41.41.8.66 1.35.88.41.16 1.03.35 2.18.4 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c1.15-.05 1.77-.24 2.18-.4.55-.22.94-.47 1.35-.88.41-.41.66-.8.88-1.35.16-.41.35-1.03.4-2.18.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.05-1.15-.24-1.77-.4-2.18a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.16-1.03-.35-2.18-.4-1.24-.06-1.61-.07-4.75-.07zm0 3.68a4.72 4.72 0 1 1 0 9.44 4.72 4.72 0 0 1 0-9.44zm0 7.78a3.06 3.06 0 1 0 0-6.12 3.06 3.06 0 0 0 0 6.12zm6-7.96a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<!-- GALLERY -->
+<section class="sec" id="gal" style="padding-top:20px">
+  <div class="halftone" style="opacity:.25"></div>
+  <div class="wrap wide">
+    <div class="sec-head rv">
+      <span class="kicker"><i></i> El laboratorio</span>
+      <h2>Trabajos <span class="blu">reales</span>, recién<br>salidos de la impresora</h2>
+      <p class="intro">Todo lo que ves acá lo hicimos nosotros. Pasá el mouse para descubrir cada pieza.</p>
+    </div>
+    <div class="gal">
+      <figure class="shot rv big-r"><img loading="lazy" decoding="async" src="img/majin-buu-escala-1-1.jpg" alt="Majin Buu — escala 1:1"><figcaption class="ov"><small>Figuras</small><b>Majin Buu — escala 1:1</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/casco-iron-man.jpg" alt="Casco Iron Man" style="object-position:center bottom"><figcaption class="ov"><small>Máscaras</small><b>Casco Iron Man</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/casco-iron-man-abierto.jpg" alt="Casco Iron Man abierto" style="object-position:center bottom"><figcaption class="ov"><small>Máscaras</small><b>Casco Iron Man abierto</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/mascara-wolverine.jpg" alt="Máscara Wolverine" class="zoom-wolv"><figcaption class="ov"><small>Máscaras</small><b>Máscara Wolverine</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/mascara-deadpool.jpg" alt="Máscara Deadpool"><figcaption class="ov"><small>Máscaras</small><b>Máscara Deadpool</b></figcaption></figure>
+      <figure class="shot rv span2"><img loading="lazy" decoding="async" src="img/mario.jpg" alt="Mario"><figcaption class="ov"><small>Figuras</small><b>Mario</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/gojo-jujutsu-kaisen.jpg" alt="Gojo — Jujutsu Kaisen"><figcaption class="ov"><small>Figuras</small><b>Gojo — Jujutsu Kaisen</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/copa-mundial-2026.jpg" alt="Copa Mundial 2026"><figcaption class="ov"><small>Deco</small><b>Copa Mundial 2026</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/separadores-de-libros.jpg" alt="Separadores de libros"><figcaption class="ov"><small>Portalibros</small><b>Separadores de libros</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/darth-vader-portalibros.jpg" alt="Darth Vader — portalibros"><figcaption class="ov"><small>Portalibros</small><b>Darth Vader — portalibros</b></figcaption></figure>
+      <figure class="shot rv big-r"><img loading="lazy" decoding="async" src="img/cuadro-luna.jpg" alt="Cuadro Luna"><figcaption class="ov"><small>Iluminación</small><b>Cuadro Luna</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/lampara-escultural.jpg" alt="Lámpara escultural"><figcaption class="ov"><small>Iluminación</small><b>Lámpara escultural</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/lampara-hongo.jpg" alt="Lámpara hongo"><figcaption class="ov"><small>Iluminación</small><b>Lámpara hongo</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/cartel-luminoso-fiora-3d.jpg" alt="Cartel luminoso Fiora 3D"><figcaption class="ov"><small>Cartelería</small><b>Cartel luminoso Fiora 3D</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/ambiente-living.jpg" alt="Ambiente living"><figcaption class="ov"><small>Deco</small><b>Ambiente living</b></figcaption></figure>
+      <figure class="shot rv span2"><img loading="lazy" decoding="async" src="img/deadpool-en-accion.jpg" alt="Deadpool en acción"><figcaption class="ov"><small>Máscaras</small><b>Deadpool en acción</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/iron-man.jpg" alt="Iron Man"><figcaption class="ov"><small>Figuras</small><b>Iron Man</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/reactor-arc-iron-man.jpg" alt="Reactor Arc — Iron Man"><figcaption class="ov"><small>Iluminación</small><b>Reactor Arc — Iron Man</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/llaveros-de-mascotas.jpg" alt="Mascotas miniatura"><figcaption class="ov"><small>Llaveros</small><b>Mascotas miniatura</b></figcaption></figure>
+      <figure class="shot rv"><img loading="lazy" decoding="async" src="img/llavero-vaso-de-cafe.jpg" alt="Llavero vaso de café"><figcaption class="ov"><small>Llaveros</small><b>Llavero vaso de café</b></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOM -->
+<section class="sec" id="custom">
+  <div class="wrap custom-grid">
+    <div class="rv">
+      <span class="kicker"><i></i> Hecho a tu medida</span>
+      <h2>Lo imaginás,<br><em>lo imprimimos</em></h2>
+      <p class="intro" style="margin-bottom:26px">Mandanos una foto, una idea o hasta un garabato. Nosotros lo modelamos, lo imprimimos y lo pintamos para que quede tal cual lo soñaste.</p>
+      <ul class="custom-list">
+        <li><span class="ck">1</span><div><b>Contanos tu idea</b> — un personaje, un regalo, el logo de tu local, tu mascota.</div></li>
+        <li><span class="ck">2</span><div><b>Diseñamos el modelo 3D</b> y te pasamos cómo va a quedar antes de imprimir.</div></li>
+        <li><span class="ck">3</span><div><b>Lo imprimimos y pintamos</b> a mano, listo para regalar o exhibir.</div></li>
+      </ul>
+      <a class="btn btn-r" href="https://wa.me/5492954378222?text=%C2%A1Hola%20Fiora%203D%21%20%F0%9F%91%8B%20Quiero%20hacer%20una%20consulta%20%F0%9F%9A%80" target="_blank" rel="noopener">Empezar mi pedido →</a>
+    </div>
+    <div class="rv">
+      <div class="bubble">
+        <p>“Les pasé una foto de mi perro y me lo trajeron hecho llavero. Igualito. Toda la familia quiere uno.”</p>
+        <div class="who">— Un cliente feliz · <span>pedido personalizado</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHOLESALE -->
+<section class="sec" id="mayor" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker"><i></i> Cómo comprás</span>
+      <h2>Para tu local <span class="blu">o</span> para vos</h2>
+      <p class="intro">Trabajamos por mayor para revendedores y también por unidad para quien quiere su pieza. Vos elegís.</p>
+    </div>
+    <div class="split">
+      <article class="deal may rv">
+        <div class="halftone"></div>
+        <div style="position:relative;z-index:2">
+          <div class="lab">Mayorista</div>
+          <h3>Revendé Fiora 3D</h3>
+          <p>Precios por mayor en llaveros, souvenirs y deco. Sumá productos que se venden solos a tu negocio.</p>
+          <a href="https://wa.me/5492954378222?text=%C2%A1Hola%20Fiora%203D%21%20%F0%9F%91%8B%20Quiero%20comprar%20por%20mayor%2C%20%C2%BFme%20pas%C3%A1s%20info%20porfa%3F" target="_blank" rel="noopener">Comprar mayorista →</a>
+        </div>
+      </article>
+      <article class="deal min rv">
+        <div class="halftone"></div>
+        <div style="position:relative;z-index:2">
+          <div class="lab">Minorista</div>
+          <h3>Comprá tu pieza</h3>
+          <p>¿Lo querés para vos o para regalar? Te lo hacemos por unidad, personalizado y listo en poco tiempo.</p>
+          <a href="https://wa.me/5492954378222?text=%C2%A1Hola%20Fiora%203D%21%20%F0%9F%91%8B%20Quiero%20encargar%20un%20dise%C3%B1o%20personalizado%20%F0%9F%99%8C" target="_blank" rel="noopener">Consultar por diseño personalizado →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <a class="brand" href="#top"><img class="brand-logo-sm" src="img/logo.png" alt="Fiora 3D"></a>
+      <p style="color:var(--tx-dim);max-width:30ch;margin:14px 0 0;font-size:.95rem">Cosas increíbles en 3D 🚀 Diseños personalizados, mayorista y minorista.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Qué hacemos</h4>
+      <a href="#cats">Figuras tamaño real</a>
+      <a href="#cats">Máscaras &amp; cascos</a>
+      <a href="#cats">Lámparas &amp; deco</a>
+      <a href="#cats">Llaveros &amp; mascotas</a>
+      <a href="#cats">Cuadros &amp; cartelería</a>
+    </div>
+    <div class="foot-col">
+      <h4>Contacto</h4>
+      <a href="https://www.instagram.com/fiora3d/" target="_blank" rel="noopener"><svg class="cico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.44c-3.14 0-3.51.01-4.75.07-1.15.05-1.77.24-2.18.4-.55.22-.94.47-1.35.88-.41.41-.66.8-.88 1.35-.16.41-.35 1.03-.4 2.18-.06 1.24-.07 1.61-.07 4.75s.01 3.51.07 4.75c.05 1.15.24 1.77.4 2.18.22.55.47.94.88 1.35.41.41.8.66 1.35.88.41.16 1.03.35 2.18.4 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c1.15-.05 1.77-.24 2.18-.4.55-.22.94-.47 1.35-.88.41-.41.66-.8.88-1.35.16-.41.35-1.03.4-2.18.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.05-1.15-.24-1.77-.4-2.18a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.16-1.03-.35-2.18-.4-1.24-.06-1.61-.07-4.75-.07zm0 3.68a4.72 4.72 0 1 1 0 9.44 4.72 4.72 0 0 1 0-9.44zm0 7.78a3.06 3.06 0 1 0 0-6.12 3.06 3.06 0 0 0 0 6.12zm6-7.96a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z"/></svg>Instagram</a>
+      <a href="https://wa.me/5492954378222?text=%C2%A1Hola%20Fiora%203D%21%20%F0%9F%91%8B%20Quiero%20hacer%20una%20consulta%20%F0%9F%9A%80" target="_blank" rel="noopener"><svg class="cico" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 .4C7.2.4 0 7.5 0 16.4c0 2.9.8 5.6 2.2 8L0 32l7.8-2C10.2 31.3 13 32 16 32c8.8 0 16-7.2 16-16S24.8.4 16 .4zm0 29.2c-2.6 0-5.1-.7-7.3-2l-.5-.3-4.6 1.3 1.2-4.5-.3-.5A13.2 13.2 0 0 1 2.7 16.4C2.7 9 8.7 3.1 16 3.1c3.6 0 6.9 1.4 9.4 3.9a13.2 13.2 0 0 1 3.9 9.4c0 7.3-6 13.2-13.3 13.2zm7.3-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2s-1 1.3-1.3 1.6c-.2.2-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.2.1-.5 0-.7l-1.2-3c-.3-.7-.6-.6-.9-.7h-.8c-.3 0-.7.1-1 .5-.4.4-1.4 1.4-1.4 3.3s1.4 3.9 1.6 4.1c.2.3 2.8 4.3 6.8 6 1 .4 1.7.7 2.3.8.9.3 1.8.3 2.5.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.4-.2-.8-.4z"/></svg>WhatsApp</a>
+      <a href="https://maps.app.goo.gl/pzoQCMG7WaecFGsG6" target="_blank" rel="noopener"><svg class="cico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Cómo llegar</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© <span id="yr"></span> Fiora 3D — Hecho en Argentina 🇦🇷</span>
+    <span>Diseño &amp; impresión 3D personalizada</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+// scroll reveal
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach((el)=>io.observe(el));
+document.querySelectorAll('.gal .shot').forEach((el,i)=>{el.style.transitionDelay=((i%9)*0.05)+'s';});
+</script>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Cerrar">×</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Anterior">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Siguiente">›</button>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+<script>
+(function(){
+  var burger=document.getElementById('burger'),menu=document.getElementById('navMobile');
+  if(burger){burger.addEventListener('click',function(){var o=menu.classList.toggle('open');burger.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');});});}
+})();
+(function(){
+  var lb=document.getElementById('lightbox'),img=document.getElementById('lbImg'),cap=document.getElementById('lbCap');
+  var shots=[].slice.call(document.querySelectorAll('.gal .shot'));
+  var data=shots.map(function(s){var im=s.querySelector('img'),b=s.querySelector('b'),sm=s.querySelector('small');return{src:im.getAttribute('src'),name:b?b.textContent:'',cat:sm?sm.textContent:''};});
+  var i=0;
+  function show(n){i=(n+data.length)%data.length;var d=data[i];img.src=d.src;img.alt=d.name;cap.innerHTML=(d.cat?'<small>'+d.cat+'</small>':'')+d.name;}
+  function open(n){show(n);lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+  function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+  shots.forEach(function(s,n){s.addEventListener('click',function(){open(n);});});
+  document.getElementById('lbClose').addEventListener('click',close);
+  document.getElementById('lbNext').addEventListener('click',function(e){e.stopPropagation();show(i+1);});
+  document.getElementById('lbPrev').addEventListener('click',function(e){e.stopPropagation();show(i-1);});
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1);});
+  var sx=0;lb.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+  lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)show(i+(dx<0?1:-1));},{passive:true});
+})();
+</script>
+</body>
+</html>
